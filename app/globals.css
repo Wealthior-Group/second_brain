@@ -1,0 +1,315 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
+
+    /* Custom variables */
+    --accent-primary: 239 84% 67%;
+    --accent-secondary: 258 90% 66%;
+    --accent-tertiary: 330 81% 60%;
+    --success: 142 71% 45%;
+    --warning: 38 92% 50%;
+    --info: 217 91% 60%;
+
+    /* Chart colors */
+    --chart-1: 239 84% 67%;
+    --chart-2: 258 90% 66%;
+    --chart-3: 330 81% 60%;
+    --chart-4: 142 71% 45%;
+    --chart-5: 38 92% 50%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 6% 6%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 6% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 4% 16%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 240 5% 64.9%;
+
+    /* Custom variables */
+    --accent-primary: 239 84% 67%;
+    --accent-secondary: 258 90% 66%;
+    --accent-tertiary: 330 81% 60%;
+    --success: 142 71% 45%;
+    --warning: 38 92% 50%;
+    --info: 217 91% 60%;
+
+    /* Chart colors */
+    --chart-1: 239 84% 67%;
+    --chart-2: 258 90% 66%;
+    --chart-3: 330 81% 60%;
+    --chart-4: 142 71% 45%;
+    --chart-5: 38 92% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/30;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Gradient utilities */
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(239 84% 67%) 0%, hsl(258 90% 66%) 50%, hsl(330 81% 60%) 100%);
+  }
+
+  .gradient-primary-text {
+    background: linear-gradient(135deg, hsl(239 84% 67%) 0%, hsl(258 90% 66%) 50%, hsl(330 81% 60%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-glow {
+    background: radial-gradient(ellipse at center, hsl(239 84% 67% / 0.2) 0%, transparent 70%);
+  }
+
+  .gradient-card {
+    background: linear-gradient(180deg, hsl(240 6% 6%) 0%, hsl(240 6% 5%) 100%);
+  }
+
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: 0 0 30px -5px hsl(239 84% 67% / 0.3);
+  }
+
+  .glow-success {
+    box-shadow: 0 0 20px -5px hsl(142 71% 45% / 0.3);
+  }
+
+  /* Animation utilities */
+  .animate-in {
+    animation: animate-in 0.3s ease-out;
+  }
+
+  @keyframes animate-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-pulse-subtle {
+    animation: pulse-subtle 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-subtle {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  /* Widget specific styles */
+  .widget-card {
+    @apply rounded-xl border bg-card transition-all duration-200;
+  }
+
+  .widget-card:hover {
+    @apply border-border/80 shadow-lg;
+  }
+
+  /* Focus ring override for better visibility */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:ring-offset-2 focus:ring-offset-background;
+  }
+
+  /* Priority colors */
+  .priority-high {
+    @apply text-red-500;
+  }
+
+  .priority-medium {
+    @apply text-amber-500;
+  }
+
+  .priority-low {
+    @apply text-green-500;
+  }
+
+  /* Timer ring animation */
+  .timer-ring {
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+  }
+
+  /* Habit dots */
+  .habit-dot {
+    @apply w-3 h-3 rounded-full transition-all duration-200;
+  }
+
+  .habit-dot-completed {
+    @apply bg-indigo-500;
+  }
+
+  .habit-dot-empty {
+    @apply bg-muted;
+  }
+
+  /* Drag and drop */
+  .dragging {
+    @apply opacity-50 scale-[1.02] shadow-2xl cursor-grabbing;
+  }
+
+  .drop-indicator {
+    @apply absolute inset-0 rounded-xl border-2 border-dashed border-indigo-500 bg-indigo-500/5;
+  }
+
+  /* Sidebar */
+  .sidebar-item {
+    @apply flex items-center gap-3 px-3 py-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors;
+  }
+
+  .sidebar-item-active {
+    @apply bg-accent text-foreground;
+  }
+
+  /* No select for UI elements */
+  .no-select {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply backdrop-blur-xl bg-background/80;
+  }
+}
+
+/* Markdown content styles */
+.markdown-content h1 {
+  @apply text-2xl font-bold mb-4 mt-6 first:mt-0;
+}
+
+.markdown-content h2 {
+  @apply text-xl font-semibold mb-3 mt-5;
+}
+
+.markdown-content h3 {
+  @apply text-lg font-medium mb-2 mt-4;
+}
+
+.markdown-content p {
+  @apply mb-3 leading-relaxed;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  @apply mb-3 pl-6;
+}
+
+.markdown-content ul {
+  @apply list-disc;
+}
+
+.markdown-content ol {
+  @apply list-decimal;
+}
+
+.markdown-content li {
+  @apply mb-1;
+}
+
+.markdown-content code {
+  @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+.markdown-content pre {
+  @apply bg-muted p-4 rounded-lg mb-3 overflow-x-auto;
+}
+
+.markdown-content pre code {
+  @apply bg-transparent p-0;
+}
+
+.markdown-content blockquote {
+  @apply border-l-4 border-indigo-500 pl-4 italic text-muted-foreground mb-3;
+}
+
+.markdown-content a {
+  @apply text-indigo-500 hover:underline;
+}
+
+.markdown-content strong {
+  @apply font-semibold;
+}
+
+/* Chat message styles */
+.chat-message-user {
+  @apply bg-indigo-500 text-white rounded-2xl rounded-br-md px-4 py-2;
+}
+
+.chat-message-assistant {
+  @apply bg-muted rounded-2xl rounded-bl-md px-4 py-2;
+}

@@ -1,0 +1,14 @@
+export { WelcomeWidget } from './WelcomeWidget';
+export { AIAssistantWidget } from './AIAssistantWidget';
+export { TasksWidget } from './TasksWidget';
+export { CalendarWidget } from './CalendarWidget';
+export { NotesWidget } from './NotesWidget';
+export { HabitsWidget } from './HabitsWidget';
+export { FocusTimerWidget } from './FocusTimerWidget';
+export { QuickCaptureWidget } from './QuickCaptureWidget';
+export { WeatherWidget } from './WeatherWidget';
+export { MoodWidget } from './MoodWidget';
+export { GoalsWidget } from './GoalsWidget';
+export { StatsWidget } from './StatsWidget';
+export { BookmarksWidget } from './BookmarksWidget';
+export { NewsWidget } from './NewsWidget';
