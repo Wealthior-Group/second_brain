@@ -14,12 +14,26 @@ interface AppShellProps {
 }
 
 export function AppShell({ children }: AppShellProps) {
-  const { sidebarCollapsed, aiChatOpen, focusModeActive } = useStore();
+  const { sidebarCollapsed, aiChatOpen, focusModeActive, toggleFocusMode } = useStore();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Handle key press to dismiss Focus Mode
+  useEffect(() => {
+    if (!focusModeActive) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        toggleFocusMode();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [focusModeActive, toggleFocusMode]);
 
   if (!mounted) {
     return null;
@@ -34,10 +48,11 @@ export function AppShell({ children }: AppShellProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 pointer-events-none"
+            className="fixed inset-0 z-50 cursor-pointer"
+            onClick={toggleFocusMode}
           >
             <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
-            <div className="absolute top-4 left-1/2 -translate-x-1/2 pointer-events-auto">
+            <div className="absolute top-4 left-1/2 -translate-x-1/2">
               <div className="flex items-center gap-2 px-4 py-2 bg-indigo-500 text-white rounded-full text-sm font-medium shadow-lg">
                 <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
                 Focus Mode Active
