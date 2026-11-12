@@ -62,8 +62,8 @@ A beautiful, AI-powered productivity dashboard built with Next.js 14. Manage tas
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/secondbrain.git
-cd secondbrain
+git clone https://github.com/Wealthior-Group/second_brain.git
+cd second_brain
 ```
 
 2. Install dependencies:
@@ -97,7 +97,7 @@ npm run lint     # Run ESLint
 ## Project Structure
 
 ```
-secondbrain/
+second_brain/
 ├── app/                    # Next.js App Router pages
 │   ├── page.tsx           # Dashboard
 │   ├── tasks/             # Tasks page
@@ -132,7 +132,7 @@ secondbrain/
 
 ### Vercel (Recommended)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/secondbrain)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Wealthior-Group/second_brain)
 
 1. Push your code to GitHub
 2. Import the project on Vercel
